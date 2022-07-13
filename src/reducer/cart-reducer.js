@@ -1,4 +1,4 @@
-import { removeObjFromArray } from "../utils";
+import { removeObjFromArray, updateArray } from "../utils";
 
 export const cartReducer = (state, { type, payload }) => {
 	switch (type) {
@@ -9,6 +9,10 @@ export const cartReducer = (state, { type, payload }) => {
 		case "REMOVE_FROM_CART":
 			return {
 				itemsInCart: removeObjFromArray(state.itemsInCart, payload.itemsInCart),
+			};
+		case "UPDATE_CART_ITEM":
+			return {
+				itemsInCart: updateArray(state.itemsInCart, payload.itemsInCart),
 			};
 		default:
 			return state;

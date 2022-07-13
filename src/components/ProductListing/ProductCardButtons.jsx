@@ -40,6 +40,28 @@ export const AddToCartBtn = (props) => {
 	);
 };
 
+export const RemoveFromCart = (props) => {
+	const { cartDispatch } = useCart();
+	const handleRemoveFromCart = () =>
+		cartDispatch({
+			type: "REMOVE_FROM_CART",
+			payload: {
+				itemsInCart: props.productId,
+			},
+		});
+	return (
+		<button
+			className="primary-btn p-5 b-radius-2 my-0 text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer "
+			onClick={handleRemoveFromCart}
+		>
+			<span>
+				<i className="fa-solid fa-trash"></i>
+			</span>
+			<p className="btn-text">Remove from Cart</p>
+		</button>
+	);
+};
+
 export const AddToWishlistBtn = (props) => {
 	const { wishlistDispatch } = useWishlist();
 	const handleAddToWishlist = () => {
@@ -112,6 +134,20 @@ export const MoveToWishlistBtn = (props) => {
 				<i className="far fa-heart"></i>
 			</span>
 			<p className="wishlist-text">Move to wishlist</p>
+		</button>
+	);
+};
+
+export const AddedToWishlist = () => {
+	return (
+		<button
+			className="outline-btn p-5 b-radius-2 my-0 text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer selected-outline-btn cursor-pointer"
+			disabled
+		>
+			<span className="wishlist-icon">
+				<i className="fa-solid fa-heart"></i>
+			</span>
+			<p className="wishlist-text">Added to wishlist</p>
 		</button>
 	);
 };
